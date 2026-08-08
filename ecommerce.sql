@@ -85,9 +85,7 @@ VALUES
 (109, 6, '2026-08-07', 450.00),
 (110, 10, '2026-08-07', 4200.00);
 
-select * from customers;
 
-select * from products;
 
 UPDATE Products
 SET price = 90000.00
@@ -101,9 +99,21 @@ UPDATE Products
 SET stock = 50
 WHERE product_id = 2;
 
-SELECT *
-FROM Products
-WHERE price > 1000;
+DELETE from orders
+where customer_id = 1;
+DELETE FROM customers
+where name = 'Rahim Uddin';
+
+DELETE from products
+where product_name = 'Women''s Jeans' ;
+
+select * from customers;
+
+select * from products;
+
+SELECT * from products
+where price > 1000;
+
 
 SELECT *
 FROM Products
@@ -120,3 +130,40 @@ ORDER BY price DESC;
 SELECT *
 FROM Customers
 ORDER BY name ASC;
+
+SELECT *
+FROM products
+LIMIT 5;
+
+select count(customer_id)
+FROM customers;
+
+SELECT avg(price)
+FROM products;
+
+select max(price)
+FROM products;
+
+select sum(stock) as total_stock
+FROM products;
+
+select avg(stock) as avg_stock
+FROM products;
+
+select count(order_id)
+FROM orders;
+
+select customers.name, orders.*
+from customers
+join orders
+on customers.customer_id = orders.customer_id
+
+select products.product_name,categories.category_name
+from products
+join categories
+on products.category_id =categories.category_id
+
+select customers.name,orders.order_id,orders.order_date,orders.order_date,orders.total_amount
+from orders
+join customers
+on customers.customer_id = orders.customer_id;
